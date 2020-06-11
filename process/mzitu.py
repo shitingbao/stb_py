@@ -85,7 +85,7 @@ def get_pics_for_one_pages(url, header, pool_num):
         pages_url = soup.select('#pins li span a')
         for page_url in pages_url:
             print('===============开始下载：', page_url.text+"==============")
-            print("此美女美图链接", page_url.get('href'))
+            print("此图链接", page_url.get('href'))
             url_list = get_pics_for_one(page_url.get('href')+"/")
             pool = Pool(pool_num)
             pool.map(download_pics, url_list)

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-import os
+import pymysql
 
+db = pymysql.connect("localhost", "root", "123456", "stbweb")
 
-def getFileInfo(file_path):
-    with open(file_path) as f:
-        print(f.name)
-        tx = f.read()
-        print(tx)
-        f.seek(0)
-        tx = f.readline()
-        print(tx)
-        f.close()
+cus = db.cursor()
+cus.execute("select * from user")
+data = cus.fetchall()
+print(len(data))
+for da in data:
+    print(da)
+# print(da[len(data)-1])
+db.close()
